@@ -2,4 +2,12 @@
 <resources>
     
     <string name="app_name">AndroidCF</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="sesso">Sesso</string>
+    <string name="maschio">M</string>
+    <string name="femmina">F</string>
+    <string name="salva">Salva</string>
+    <string name="annulla">Annulla</string>
+    
 </resources>
