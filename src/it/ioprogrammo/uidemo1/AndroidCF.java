@@ -12,7 +12,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class UIDemo1Activity extends Activity {
+public class AndroidCF extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
