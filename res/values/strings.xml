@@ -13,5 +13,6 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="comune">Comune</string>
+    <string name="data">Data</string>
 
 </resources>

@@ -86,7 +86,8 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editTextComune"
         android:layout_alignTop="@+id/buttonCalcola"
-        android:text="@string/cancella" />
+        android:text="@string/cancella"
+        android:onClick="onBtnClicked" />
 
     <Button
         android:id="@+id/buttonCalcola"
@@ -121,5 +122,13 @@
         android:layout_alignTop="@+id/radioGroup"
         android:layout_marginTop="14dp"
         android:text="@string/sesso" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewComune"
+        android:layout_alignTop="@+id/datePicker"
+        android:text="@string/data" />
 
 </RelativeLayout>
