@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <string name="app_name">AndroidCF</string>
     <string name="nome">Nome</string>
     <string name="cognome">Cognome</string>
     <string name="sesso">Sesso</string>
     <string name="maschio">M</string>
     <string name="femmina">F</string>
-    <string name="salva">Salva</string>
-    <string name="annulla">Annulla</string>
-    
+    <string name="calcola">Calcola</string>
+    <string name="cancella">Cancella</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="comune">Comune</string>
+
 </resources>

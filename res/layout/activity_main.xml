@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="right"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AndroidCF" >
+
+    <TextView
+        android:id="@+id/textViewNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextNome"
+        android:layout_alignBottom="@+id/editTextNome"
+        android:text="@string/nome" />
+
+    <TextView
+        android:id="@+id/textViewCognome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextCognome"
+        android:layout_alignBottom="@+id/editTextCognome"
+        android:text="@string/cognome" />
+
+    <EditText
+        android:id="@+id/editTextCognome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextNome"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="18dp"
+        android:layout_toRightOf="@+id/textViewCognome"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextCognome"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextCognome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radioF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/femmina" />
+
+        <RadioButton
+            android:id="@+id/radioM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/maschio" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextComune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewComune"
+        android:layout_alignBottom="@+id/textViewComune"
+        android:layout_alignLeft="@+id/editTextCognome"
+        android:layout_weight="1"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/buttonCancella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editTextComune"
+        android:layout_alignTop="@+id/buttonCalcola"
+        android:text="@string/cancella" />
+
+    <Button
+        android:id="@+id/buttonCalcola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextComune"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="@string/calcola" />
+
+    <TextView
+        android:id="@+id/textViewComune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewCognome"
+        android:layout_below="@+id/datePicker"
+        android:layout_marginTop="40dp"
+        android:text="@string/comune" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textViewComune" />
+
+    <TextView
+        android:id="@+id/textViewSesso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewCognome"
+        android:layout_alignTop="@+id/radioGroup"
+        android:layout_marginTop="14dp"
+        android:text="@string/sesso" />
+
+</RelativeLayout>
