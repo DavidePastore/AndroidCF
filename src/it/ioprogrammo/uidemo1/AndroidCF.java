@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 public class AndroidCF extends Activity {
 
@@ -24,15 +25,18 @@ public class AndroidCF extends Activity {
 	
 	/**
 	 * Reset the value of the fields
-	 * @param v
+	 * @param v the View.
 	 */
 	public void onBtnClicked(View v){
 		EditText editTextName = (EditText) findViewById(R.id.editTextNome);
 		EditText editTextCognome = (EditText) findViewById(R.id.editTextCognome);
 		EditText editTextComune = (EditText) findViewById(R.id.editTextComune);
+		RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+		
 		editTextName.setText("");
 		editTextCognome.setText("");
 		editTextComune.setText("");
+		radioGroup.clearCheck();
 	}
 
 }

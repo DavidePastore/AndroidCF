@@ -14,5 +14,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="comune">Comune</string>
     <string name="data">Data</string>
+    <string name="empty"></string>
 
 </resources>
