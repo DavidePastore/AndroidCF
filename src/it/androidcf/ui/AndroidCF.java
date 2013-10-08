@@ -1,4 +1,4 @@
-package it.ioprogrammo.uidemo1;
+package it.androidcf.ui;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -7,10 +7,11 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import it.androidcf.R;
 
 public class AndroidCF extends Activity {
 	
-	private it.ioprogrammo.database.AndroidCF database;
+	private it.androidcf.database.AndroidCF database;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class AndroidCF extends Activity {
 	 * @param v the View.
 	 */
 	public void onCalcolaClicked(View v){
-		database = new it.ioprogrammo.database.AndroidCF(this);
+		database = new it.androidcf.database.AndroidCF(this);
 		
 		EditText editTextComune = (EditText) findViewById(R.id.editTextComune);
 

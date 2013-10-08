@@ -1,4 +1,4 @@
-package it.ioprogrammo.database;
+package it.androidcf.database;
 
 import android.content.Context;
 import android.database.Cursor;

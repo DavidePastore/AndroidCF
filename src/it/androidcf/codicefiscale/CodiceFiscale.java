@@ -1,6 +1,6 @@
-package it.ioprogrammo.codicefiscale;
+package it.androidcf.codicefiscale;
 
-import it.ioprogrammo.util.UtilsLettere;
+import it.androidcf.util.UtilsLettere;
 
 /**
  * La classe che rappresenta il codice fiscale.

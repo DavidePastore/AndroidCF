@@ -1,4 +1,4 @@
-package it.ioprogrammo.util;
+package it.androidcf.util;
 
 /**
  * Utilità per le lettere.

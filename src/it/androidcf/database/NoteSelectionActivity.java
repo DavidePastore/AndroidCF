@@ -1,4 +1,4 @@
-package it.ioprogrammo.database;
+package it.androidcf.database;
 
 import android.app.ListActivity;
 import android.content.Context;
