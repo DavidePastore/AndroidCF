@@ -1,5 +1,8 @@
 package it.androidcf.codicefiscale;
 
+import android.util.Log;
+import it.androidcf.BuildConfig;
+import it.androidcf.Constants;
 import it.androidcf.util.UtilsLettere;
 
 /**
@@ -11,7 +14,9 @@ public class CodiceFiscale {
 	
 	private String nome;
 	private String cognome;
-	private String dataDiNascita;
+	private int giorno;
+	private int mese;
+	private int anno;
 	private String sesso;
 	private String comuneDiNascita;
 	private String carattereDiControllo;
@@ -24,10 +29,12 @@ public class CodiceFiscale {
 	 * @param sesso
 	 * @param comuneDiNascita
 	 */
-	public CodiceFiscale(String nome, String cognome, String dataDiNascita, String sesso, String comuneDiNascita){
+	public CodiceFiscale(String nome, String cognome, int giorno, int mese, int anno, String sesso, String comuneDiNascita){
 		this.nome = nome;
 		this.cognome = cognome;
-		this.dataDiNascita = dataDiNascita;
+		this.giorno = giorno;
+		this.mese = mese;
+		this.anno = anno;
 		this.sesso = sesso;
 		this.comuneDiNascita = comuneDiNascita;
 	}
@@ -59,19 +66,49 @@ public class CodiceFiscale {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
+	
+	
 
 	/**
-	 * @return the dataDiNascita
+	 * @return the giorno
 	 */
-	public String getDataDiNascita() {
-		return dataDiNascita;
+	public int getGiorno() {
+		return giorno;
 	}
 
 	/**
-	 * @param dataDiNascita the dataDiNascita to set
+	 * @param giorno the giorno to set
 	 */
-	public void setDataDiNascita(String dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
+	public void setGiorno(int giorno) {
+		this.giorno = giorno;
+	}
+
+	/**
+	 * @return the mese
+	 */
+	public int getMese() {
+		return mese;
+	}
+
+	/**
+	 * @param mese the mese to set
+	 */
+	public void setMese(int mese) {
+		this.mese = mese;
+	}
+
+	/**
+	 * @return the anno
+	 */
+	public int getAnno() {
+		return anno;
+	}
+
+	/**
+	 * @param anno the anno to set
+	 */
+	public void setAnno(int anno) {
+		this.anno = anno;
 	}
 
 	/**
@@ -108,6 +145,19 @@ public class CodiceFiscale {
 	public String getCarattereDiControllo() {
 		return carattereDiControllo;
 	}
+	
+	
+	/**
+	 * Calcola il codice fiscale.
+	 * @return Restituisce il codice fiscale generato.
+	 */
+	public String calcola(){
+		String cognomeCalcolato = this.calcolaCognome(cognome);
+		String risultato = cognomeCalcolato;
+		
+		
+		return risultato;
+	}
 
 
 	
@@ -119,25 +169,43 @@ public class CodiceFiscale {
 	private String calcolaCognome(String cognome){
 		String cognomeCalcolato;
 		int numeroConsonanti;
-		cognome = UtilsLettere.eliminaSpaziBianchi(cognome);
+		cognome = UtilsLettere.eliminaSpaziBianchi(cognome).toUpperCase();
 		
 		if(cognome.length() >= 3){
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Il cognome >= 3");
+			}
 			numeroConsonanti = UtilsLettere.getNumeroConsonanti(cognome);
 			
 			if(numeroConsonanti >= 3){
+				if(BuildConfig.DEBUG){
+					Log.d(Constants.LOG, "nc cognome >= 3");
+				}
 				cognomeCalcolato = UtilsLettere.getPrimeConsonanti(cognome, 3);
 			}
 			else{
+				if(BuildConfig.DEBUG){
+					Log.d(Constants.LOG, "nc cognome < 3");
+				}
 				cognomeCalcolato = UtilsLettere.getPrimeConsonanti(cognome, numeroConsonanti);
 				cognomeCalcolato += UtilsLettere.getPrimeVocali(cognome, 3 - numeroConsonanti);
 			}
 		}
 		else{
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Il cognome < 3");
+			}
 			int numeroCaratteri = cognome.length();
 			cognomeCalcolato = cognome + UtilsLettere.nXChar(3 - numeroCaratteri);
 		}
 		
 		
 		return cognomeCalcolato;
+	}
+	
+	private String calcolaComune(String comune){
+		//it.androidcf.database.AndroidCF database = new it.androidcf.database.AndroidCF(this);
+		//return database.getCodiceCatastale(editTextComune.getText().toString().toUpperCase());
+		return "";
 	}
 }

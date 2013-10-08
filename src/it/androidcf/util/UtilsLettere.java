@@ -19,9 +19,8 @@ public class UtilsLettere {
 	 */
 	public static int getNumeroConsonanti(String string){
 		int consonanti = 0;
-		string = string.toUpperCase();
 		for(int i = 0; i < string.length(); i++){
-			if(!VOCALI.contains(Character.toString(string.charAt(i)))){
+			if(!isVocale(string.charAt(i))){
 				consonanti++;
 			}
 		}
@@ -37,10 +36,9 @@ public class UtilsLettere {
 	 */
 	public static String getPrimeConsonanti(String string, int numero){
 		String consonanti = "";
-		string = string.toUpperCase();
 		for(int i = 0; i < string.length(); i++){
-			if(!VOCALI.contains(Character.toString(string.charAt(i)))){
-				if(numero < consonanti.length()){
+			if(!isVocale(string.charAt(i))){
+				if(consonanti.length() < numero){
 					consonanti += Character.toString(string.charAt(i));
 				}
 			}
@@ -56,10 +54,9 @@ public class UtilsLettere {
 	 */
 	public static String getPrimeVocali(String string, int numero){
 		String vocali = "";
-		string = string.toUpperCase();
 		for(int i = 0; i < string.length(); i++){
-			if(VOCALI.contains(Character.toString(string.charAt(i)))){
-				if(numero < vocali.length()){
+			if(isVocale(string.charAt(i))){
+				if(vocali.length() < numero){
 					vocali += Character.toString(string.charAt(i));
 				}
 			}
