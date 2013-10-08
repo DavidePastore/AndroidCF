@@ -139,6 +139,7 @@
                 android:id="@+id/buttonCalcola1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCalcolaClicked"
                 android:text="@string/calcola" />
 
             <Button

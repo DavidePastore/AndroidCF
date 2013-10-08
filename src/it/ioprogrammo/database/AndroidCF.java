@@ -49,25 +49,33 @@ public class AndroidCF extends SQLiteAssetHelper{
     }
     
     /**
-     * Restituisce tutti i codici catastali.
-     * @param comune il comune
-     * @return 
+     * Restituisce il codice catastale di un comune.
+     * @param comune il comune del quale prendere il
+     * @return Restituisce il CodiceCatastale.
+     * @throws Exception 
      */
-    public Cursor getCodiciCatastali(String comune) {
-
+    public String getCodiceCatastale(String comune) throws Exception {
+    	
     	SQLiteDatabase db = getReadableDatabase();
     	SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-    	String [] sqlSelect = {"_Id", "NomeComune"};
+    	String [] projection = {"Codicecatastale"};
     	String sqlTables = "CodiciCatastali";
+    	String selection = "Nomecomune = ?";
+    	String[] selectionArgs = {
+    			comune
+    	};
 
     	qb.setTables(sqlTables);
-    	Cursor c = qb.query(db, sqlSelect, null, null,
-    			null, null, null);
+    	Cursor c = qb.query(db, projection, selection, selectionArgs, null, null, null);
 
     	c.moveToFirst();
-    	return c;
-
+    	
+    	if(c.getCount() == 0){
+    		throw new Exception("Nessun codice catastale trovato");
+    	}
+    	
+    	return c.getString(0);
     }
 
 }

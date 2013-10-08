@@ -16,14 +16,6 @@ public class AndroidCF extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		database = new it.ioprogrammo.database.AndroidCF(this);
-		Cursor cursor = database.getCodiciCatastali();
-		System.out.println("Elementi: "+cursor.getCount());
-		
-		//while(cursor.moveToNext()){
-			System.out.println("ID: " + cursor.getInt(it.ioprogrammo.database.AndroidCF.COLONNA_ID) + "; NomeComune: " + cursor.getString(it.ioprogrammo.database.AndroidCF.COLONNA_NOME_COMUNE));
-		//}/**/
 	}
 
 	@Override
@@ -35,7 +27,7 @@ public class AndroidCF extends Activity {
 	
 	
 	/**
-	 * Reset the value of the fields
+	 * Resetta i valori dei campi
 	 * @param v the View.
 	 */
 	public void onBtnClicked(View v){
@@ -48,6 +40,25 @@ public class AndroidCF extends Activity {
 		editTextCognome.setText("");
 		editTextComune.setText("");
 		radioGroup.clearCheck();
+	}
+	
+	
+	/**
+	 * Calcola il valore del comune.
+	 * @param v the View.
+	 */
+	public void onCalcolaClicked(View v){
+		database = new it.ioprogrammo.database.AndroidCF(this);
+		
+		EditText editTextComune = (EditText) findViewById(R.id.editTextComune);
+
+		String codiceCatastale;
+		try {
+			codiceCatastale = database.getCodiceCatastale(editTextComune.getText().toString().toUpperCase());
+			System.out.println("Codice catastale: " + codiceCatastale);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
