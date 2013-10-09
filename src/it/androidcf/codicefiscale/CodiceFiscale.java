@@ -263,11 +263,14 @@ public class CodiceFiscale {
 	private String calcolaCodiceDataNascitaESesso(int anno, int mese, int giorno, String sesso){
 		String codiceDataNascitaESesso;
 		String codiceAnno;
+		String codiceMese;
+		String codiceGiornoESesso;
 		
 		codiceAnno = calcolaCodiceAnno(anno);
+		codiceMese = calcolaCodiceMese(mese);
+		codiceGiornoESesso = calcolaCodiceGiornoESesso(giorno, sesso);
 		
-		
-		codiceDataNascitaESesso = codiceAnno;
+		codiceDataNascitaESesso = codiceAnno + codiceMese + codiceGiornoESesso;
 		
 		return codiceDataNascitaESesso;
 	}
@@ -279,6 +282,78 @@ public class CodiceFiscale {
 	 */
 	private String calcolaCodiceAnno(int anno){
 		return Integer.toString(anno).substring(2);
+	}
+	
+	/**
+	 * Calcola il codice del mese.
+	 * @param mese il mese da cui calcolare il codice.
+	 * @return Il codice del mese del codice fiscale.
+	 */
+	private String calcolaCodiceMese(int mese){
+		String risultato;
+		mese++; //I mesi iniziano da 1
+		switch(mese){
+			case 1:
+				risultato = "A";
+				break;
+			case 2:
+				risultato = "B";
+				break;
+			case 3:
+				risultato = "C";
+				break;
+			case 4:
+				risultato = "D";
+				break;
+			case 5:
+				risultato = "E";
+				break;
+			case 6:
+				risultato = "H";
+				break;
+			case 7:
+				risultato = "L";
+				break;
+			case 8:
+				risultato = "M";
+				break;
+			case 9:
+				risultato = "P";
+				break;
+			case 10:
+				risultato = "R";
+				break;
+			case 11:
+				risultato = "S";
+				break;
+			case 12:
+				risultato = "T";
+				break;
+			default:
+				risultato = "";
+				break;
+		}
+		return risultato;
+	}
+	
+	
+	/**
+	 * Calcola il codice del giorno e del sesso.
+	 * @param giorno il giorno da cui calcolare il codice.
+	 * @param sesso il sesso da cui calcolare il codice.
+	 * @return Il codice del giorno e del sesso del codice fiscale.
+	 */
+	private String calcolaCodiceGiornoESesso(int giorno, String sesso){
+		String codiceGiorno = String.format("%02d", giorno);
+		
+		if(sesso.equals("F")){
+			int codiceGiornoIntero;
+			codiceGiornoIntero = Integer.parseInt(codiceGiorno);
+			codiceGiornoIntero += 40;
+			codiceGiorno = Integer.toString(codiceGiornoIntero);
+		}
+		
+		return codiceGiorno;
 	}
 	
 	
