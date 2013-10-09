@@ -3,7 +3,7 @@ package it.androidcf.codicefiscale;
 import android.util.Log;
 import it.androidcf.BuildConfig;
 import it.androidcf.Constants;
-import it.androidcf.util.UtilsLettere;
+import it.androidcf.util.UtilsParole;
 
 /**
  * La classe che rappresenta il codice fiscale.
@@ -152,43 +152,44 @@ public class CodiceFiscale {
 	 * @return Restituisce il codice fiscale generato.
 	 */
 	public String calcola(){
-		String cognomeCalcolato = this.calcolaCognome(cognome);
-		String risultato = cognomeCalcolato;
+		String codiceCognome = this.calcolaCodiceCognome(this.cognome);
+		String codiceNome = this.calcolaCodiceNome(this.nome);
+		String codiceDataNascitaESesso = this.calcolaCodiceDataNascitaESesso(this.anno, this.mese, this.giorno, this.sesso);
+		String risultato = codiceCognome + codiceNome + codiceDataNascitaESesso;
 		
 		
 		return risultato;
 	}
 
 
-	
 	/**
-	 * Calcola il cognome del codice fiscale.
-	 * @param cognome il cognome da cui calcolare il valore
-	 * @return Il cognome nel formato voluto dal codice fiscale.
+	 * Calcola il codice del cognome del codice fiscale.
+	 * @param cognome il cognome da cui calcolare il codice
+	 * @return Il codice del cognome del codice fiscale.
 	 */
-	private String calcolaCognome(String cognome){
-		String cognomeCalcolato;
+	private String calcolaCodiceCognome(String cognome){
+		String codiceCognome;
 		int numeroConsonanti;
-		cognome = UtilsLettere.eliminaSpaziBianchi(cognome).toUpperCase();
+		cognome = UtilsParole.eliminaSpaziBianchi(cognome).toUpperCase();
 		
 		if(cognome.length() >= 3){
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Il cognome >= 3");
 			}
-			numeroConsonanti = UtilsLettere.getNumeroConsonanti(cognome);
+			numeroConsonanti = UtilsParole.getNumeroConsonanti(cognome);
 			
 			if(numeroConsonanti >= 3){
 				if(BuildConfig.DEBUG){
 					Log.d(Constants.LOG, "nc cognome >= 3");
 				}
-				cognomeCalcolato = UtilsLettere.getPrimeConsonanti(cognome, 3);
+				codiceCognome = UtilsParole.getPrimeConsonanti(cognome, 3);
 			}
 			else{
 				if(BuildConfig.DEBUG){
 					Log.d(Constants.LOG, "nc cognome < 3");
 				}
-				cognomeCalcolato = UtilsLettere.getPrimeConsonanti(cognome, numeroConsonanti);
-				cognomeCalcolato += UtilsLettere.getPrimeVocali(cognome, 3 - numeroConsonanti);
+				codiceCognome = UtilsParole.getPrimeConsonanti(cognome, numeroConsonanti);
+				codiceCognome += UtilsParole.getPrimeVocali(cognome, 3 - numeroConsonanti);
 			}
 		}
 		else{
@@ -196,14 +197,92 @@ public class CodiceFiscale {
 				Log.d(Constants.LOG, "Il cognome < 3");
 			}
 			int numeroCaratteri = cognome.length();
-			cognomeCalcolato = cognome + UtilsLettere.nXChar(3 - numeroCaratteri);
+			codiceCognome = cognome + UtilsParole.nXChar(3 - numeroCaratteri);
 		}
 		
 		
-		return cognomeCalcolato;
+		return codiceCognome;
 	}
 	
-	private String calcolaComune(String comune){
+	
+	/**
+	 * Calcola il codice del nome del codice fiscale.
+	 * @param nome il nome da cui calcolare il codice
+	 * @return Il codice del nome del codice fiscale.
+	 */
+	private String calcolaCodiceNome(String nome){
+		String codiceNome;
+		int numeroConsonanti;
+		nome = UtilsParole.eliminaSpaziBianchi(nome).toUpperCase();
+		
+		if(nome.length() >= 3){
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Il nome >= 3");
+			}
+			numeroConsonanti = UtilsParole.getNumeroConsonanti(nome);
+			
+			if(numeroConsonanti >= 4){
+				Log.d(Constants.LOG, "nc nome >= 4");
+				codiceNome = UtilsParole.getConsonanteI(nome, 1) + UtilsParole.getConsonanteI(nome, 3) + UtilsParole.getConsonanteI(nome, 4);
+			}
+			else if(numeroConsonanti >= 3){
+				if(BuildConfig.DEBUG){
+					Log.d(Constants.LOG, "nc nome >= 3");
+				}
+				codiceNome = UtilsParole.getPrimeConsonanti(nome, 3);
+			}
+			else{
+				if(BuildConfig.DEBUG){
+					Log.d(Constants.LOG, "nc nome < 3");
+				}
+				codiceNome = UtilsParole.getPrimeConsonanti(nome, numeroConsonanti);
+				codiceNome += UtilsParole.getPrimeVocali(nome, 3 - numeroConsonanti);
+			}
+		}
+		else{
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Il nome < 3");
+			}
+			int numeroCaratteri = nome.length();
+			codiceNome = nome + UtilsParole.nXChar(3 - numeroCaratteri);
+		}
+		
+		
+		return codiceNome;
+	}
+	
+	
+	/**
+	 * Calcola il codice della data di nascita e del sesso.
+	 * @param anno l'anno da cui calcolare il codice.
+	 * @param mese il mese da cui calcolare il codice.
+	 * @param giorno il giorno da cui calcolare il codice.
+	 * @param sesso il sesso da cui calcolare il codice.
+	 * @return Il codice della data di nascita e del sesso del codice fiscale.
+	 */
+	private String calcolaCodiceDataNascitaESesso(int anno, int mese, int giorno, String sesso){
+		String codiceDataNascitaESesso;
+		String codiceAnno;
+		
+		codiceAnno = calcolaCodiceAnno(anno);
+		
+		
+		codiceDataNascitaESesso = codiceAnno;
+		
+		return codiceDataNascitaESesso;
+	}
+	
+	/**
+	 * Calcola il codice dell'anno.
+	 * @param anno l'anno da cui calcolare il codice.
+	 * @return Il codice dell'anno del codice fiscale.
+	 */
+	private String calcolaCodiceAnno(int anno){
+		return Integer.toString(anno).substring(2);
+	}
+	
+	
+	private String calcolaCodiceComune(String comune){
 		//it.androidcf.database.AndroidCF database = new it.androidcf.database.AndroidCF(this);
 		//return database.getCodiceCatastale(editTextComune.getText().toString().toUpperCase());
 		return "";

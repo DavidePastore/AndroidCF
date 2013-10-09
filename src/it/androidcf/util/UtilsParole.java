@@ -1,11 +1,11 @@
 package it.androidcf.util;
 
 /**
- * Utilità per le lettere.
+ * Utilità per le parole.
  * @author <a href="https://github.com/DavidePastore">Davide Pastore</a>
  *
  */
-public class UtilsLettere {
+public class UtilsParole {
 	
 	/**
 	 * Tutte le vocali.
@@ -45,6 +45,27 @@ public class UtilsLettere {
 		}
 		return consonanti;
 	}
+	
+	/**
+	 * Restituisce la i-esima consonante.
+	 * @param string la stringa sulla quale cercare.
+	 * @param i l'indice della consonante.
+	 * @return Restituisce la i-esima consonante di string.
+	 */
+	public static String getConsonanteI(String string, int i){
+		int contatoreConsonanti = 0;
+		for(int j = 0; j < string.length(); j++){
+			if(!isVocale(string.charAt(j))){
+				contatoreConsonanti++;
+				if(contatoreConsonanti == i){
+					return Character.toString(string.charAt(j));
+				}
+			}
+		}
+		return null;
+	}
+	
+	
 	
 	/**
 	 * Restituisce le prime numero vocali presenti nella stringa.
