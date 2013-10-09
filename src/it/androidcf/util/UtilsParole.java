@@ -113,10 +113,41 @@ public class UtilsParole {
 	/**
 	 * Controlla se un carattere è una vocale.
 	 * @param character il carattere.
-	 * @return Restituisce true se il carattere una vocale.
+	 * @return Restituisce true se il carattere è una vocale e false in caso contrario.
 	 */
 	public static boolean isVocale(char character){
 		return VOCALI.contains(Character.toString(character));
+	}
+	
+	/**
+	 * Restituisce la stringa con tutti i caratteri di posizione pari di string.
+	 * @param string la stringa dal quale calcolare la stringa con tutti i caratteri di posizione pari.
+	 * @return Restituisce la stringa con tutti i caratteri di posizione pari di string.
+	 */
+	public static String getStringaPari(String string){
+		String risultato = "";
+		for(int i = 0; i < string.length(); i++){
+			if((i+1) % 2 == 0){
+				risultato += Character.toString(string.charAt(i));
+			}
+		}
+		return risultato;
+	}
+	
+	
+	/**
+	 * Restituisce la stringa con tutti i caratteri di posizione dispari di string.
+	 * @param string la stringa dal quale calcolare la stringa con tutti i caratteri di posizione dispari.
+	 * @return Restituisce la stringa con tutti i caratteri di posizione dispari di string.
+	 */
+	public static String getStringaDispari(String string){
+		String risultato = "";
+		for(int i = 0; i < string.length(); i++){
+			if((i+1) % 2 == 1){
+				risultato += Character.toString(string.charAt(i));
+			}
+		}
+		return risultato;
 	}
 	
 	
