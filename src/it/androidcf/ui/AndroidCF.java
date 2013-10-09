@@ -96,13 +96,15 @@ public class AndroidCF extends Activity {
 		comuneDiNascita = editTextComune.getText().toString();
 
 		try {
-			CodiceFiscale codiceFiscale = new CodiceFiscale(nome, cognome, giorno, mese, anno, sesso, comuneDiNascita);
+			CodiceFiscale codiceFiscale = new CodiceFiscale(nome, cognome, giorno, mese, anno, sesso, comuneDiNascita, database);
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Codice fiscale generato: " + codiceFiscale.calcola());
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Errore: " + e);
+			}
 		}
 	}
 

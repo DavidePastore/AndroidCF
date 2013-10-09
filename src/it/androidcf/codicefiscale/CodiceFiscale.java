@@ -3,6 +3,7 @@ package it.androidcf.codicefiscale;
 import android.util.Log;
 import it.androidcf.BuildConfig;
 import it.androidcf.Constants;
+import it.androidcf.ui.AndroidCF;
 import it.androidcf.util.UtilsParole;
 
 /**
@@ -20,6 +21,7 @@ public class CodiceFiscale {
 	private String sesso;
 	private String comuneDiNascita;
 	private String carattereDiControllo;
+	private it.androidcf.database.AndroidCF database;
 	
 	/**
 	 * Costruttore della classe
@@ -28,8 +30,9 @@ public class CodiceFiscale {
 	 * @param dataDiNascita
 	 * @param sesso
 	 * @param comuneDiNascita
+	 * @param database 
 	 */
-	public CodiceFiscale(String nome, String cognome, int giorno, int mese, int anno, String sesso, String comuneDiNascita){
+	public CodiceFiscale(String nome, String cognome, int giorno, int mese, int anno, String sesso, String comuneDiNascita, it.androidcf.database.AndroidCF androidCF){
 		this.nome = nome;
 		this.cognome = cognome;
 		this.giorno = giorno;
@@ -37,6 +40,7 @@ public class CodiceFiscale {
 		this.anno = anno;
 		this.sesso = sesso;
 		this.comuneDiNascita = comuneDiNascita;
+		this.database = androidCF;
 	}
 
 	/**
@@ -150,12 +154,14 @@ public class CodiceFiscale {
 	/**
 	 * Calcola il codice fiscale.
 	 * @return Restituisce il codice fiscale generato.
+	 * @throws Exception 
 	 */
-	public String calcola(){
+	public String calcola() throws Exception{
 		String codiceCognome = this.calcolaCodiceCognome(this.cognome);
 		String codiceNome = this.calcolaCodiceNome(this.nome);
 		String codiceDataNascitaESesso = this.calcolaCodiceDataNascitaESesso(this.anno, this.mese, this.giorno, this.sesso);
-		String risultato = codiceCognome + codiceNome + codiceDataNascitaESesso;
+		String codiceComunale = this.calcolaCodiceComune(this.comuneDiNascita);
+		String risultato = codiceCognome + codiceNome + codiceDataNascitaESesso + codiceComunale;
 		
 		
 		return risultato;
@@ -357,9 +363,7 @@ public class CodiceFiscale {
 	}
 	
 	
-	private String calcolaCodiceComune(String comune){
-		//it.androidcf.database.AndroidCF database = new it.androidcf.database.AndroidCF(this);
-		//return database.getCodiceCatastale(editTextComune.getText().toString().toUpperCase());
-		return "";
+	private String calcolaCodiceComune(String comune) throws Exception{
+		return database.getCodiceCatastale(comune.toUpperCase());
 	}
 }
