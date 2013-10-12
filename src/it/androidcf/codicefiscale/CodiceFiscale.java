@@ -20,7 +20,6 @@ public class CodiceFiscale {
 	private int anno;
 	private String sesso;
 	private String comuneDiNascita;
-	private String carattereDiControllo;
 	private it.androidcf.database.AndroidCF database;
 	
 	/**
@@ -141,13 +140,6 @@ public class CodiceFiscale {
 	 */
 	public void setComuneDiNascita(String comuneDiNascita) {
 		this.comuneDiNascita = comuneDiNascita;
-	}
-
-	/**
-	 * @return the carattereDiControllo
-	 */
-	public String getCarattereDiControllo() {
-		return carattereDiControllo;
 	}
 	
 	
@@ -391,11 +383,11 @@ public class CodiceFiscale {
 		String dispari = UtilsParole.getStringaDispari(codice);
 		
 		//Passaggio 2 (conversione valori)
-		dispari = conversioneCaratteriDispari(dispari);
-		pari = conversioneCaratteriPari(pari);
+		int sommaDispari = conversioneCaratteriDispari(dispari);
+		int sommaPari = conversioneCaratteriPari(pari);
 		
 		//Passaggio 3 (somma, divisione e conversione finale)
-		long somma = Long.parseLong(dispari) + Long.parseLong(pari);
+		int somma = sommaDispari + sommaPari;
 		int resto = (int) somma % 26;
 		char restoConvertito = conversioneResto(resto);
 		
@@ -413,84 +405,84 @@ public class CodiceFiscale {
 	/**
 	 * Conversione dei caratteri dispari per il secondo passaggio della creazione del carattere di controllo.
 	 * @param string la stringa dei caratteri dispari.
-	 * @return Stringa dispari convertita.
+	 * @return Numero intero convertito (parte dispari).
 	 */
-	private String conversioneCaratteriDispari(String string){
-		String risultato = "";
+	private int conversioneCaratteriDispari(String string){
+		int risultato = 0;
 		for(int i = 0; i < string.length(); i++){
 			char carattere = string.charAt(i);
 			if(carattere == '0'){
-				risultato += "1";
+				risultato += 1;
 			} else if(carattere == '1'){
-				risultato += "0";
+				risultato += 0;
 			} else if(carattere == '2'){
-				risultato += "5";
+				risultato += 5;
 			} else if(carattere == '3'){
-				risultato += "7";
+				risultato += 7;
 			} else if(carattere == '4'){
-				risultato += "9";
+				risultato += 9;
 			} else if(carattere == '5'){
-				risultato += "13";
+				risultato += 13;
 			} else if(carattere == '6'){
-				risultato += "15";
+				risultato += 15;
 			} else if(carattere == '7'){
-				risultato += "17";
+				risultato += 17;
 			} else if(carattere == '8'){
-				risultato += "19";
+				risultato += 19;
 			} else if(carattere == '9'){
-				risultato += "21";
+				risultato += 21;
 			} else if(carattere == 'A'){
-				risultato += "1";
+				risultato += 1;
 			} else if(carattere == 'B'){
-				risultato += "0";
+				risultato += 0;
 			} else if(carattere == 'C'){
-				risultato += "5";
+				risultato += 5;
 			} else if(carattere == 'D'){
-				risultato += "7";
+				risultato += 7;
 			} else if(carattere == 'E'){
-				risultato += "9";
+				risultato += 9;
 			} else if(carattere == 'F'){
-				risultato += "13";
+				risultato += 13;
 			} else if(carattere == 'G'){
-				risultato += "15";
+				risultato += 15;
 			} else if(carattere == 'H'){
-				risultato += "17";
+				risultato += 17;
 			} else if(carattere == 'I'){
-				risultato += "19";
+				risultato += 19;
 			} else if(carattere == 'J'){
-				risultato += "21";
+				risultato += 21;
 			} else if(carattere == 'K'){
-				risultato += "2";
+				risultato += 2;
 			} else if(carattere == 'L'){
-				risultato += "4";
+				risultato += 4;
 			} else if(carattere == 'M'){
-				risultato += "18";
+				risultato += 18;
 			} else if(carattere == 'N'){
-				risultato += "20";
+				risultato += 20;
 			} else if(carattere == 'O'){
-				risultato += "11";
+				risultato += 11;
 			} else if(carattere == 'P'){
-				risultato += "3";
+				risultato += 3;
 			} else if(carattere == 'Q'){
-				risultato += "6";
+				risultato += 6;
 			} else if(carattere == 'R'){
-				risultato += "8";
+				risultato += 8;
 			} else if(carattere == 'S'){
-				risultato += "12";
+				risultato += 12;
 			} else if(carattere == 'T'){
-				risultato += "14";
+				risultato += 14;
 			} else if(carattere == 'U'){
-				risultato += "16";
+				risultato += 16;
 			} else if(carattere == 'V'){
-				risultato += "10";
+				risultato += 10;
 			} else if(carattere == 'W'){
-				risultato += "22";
+				risultato += 22;
 			} else if(carattere == 'X'){
-				risultato += "25";
+				risultato += 25;
 			} else if(carattere == 'Y'){
-				risultato += "24";
+				risultato += 24;
 			} else if(carattere == 'Z'){
-				risultato += "23";
+				risultato += 23;
 			}
 		}
 		return risultato;
@@ -500,84 +492,84 @@ public class CodiceFiscale {
 	/**
 	 * Conversione dei caratteri pari per il secondo passaggio della creazione del carattere di controllo.
 	 * @param string la stringa dei caratteri pari.
-	 * @return Stringa pari convertita.
+	 * @return Numero intero convertito (parte pari).
 	 */
-	private String conversioneCaratteriPari(String string){
-		String risultato = "";
+	private int conversioneCaratteriPari(String string){
+		int risultato = 0;
 		for(int i = 0; i < string.length(); i++){
 			char carattere = string.charAt(i);
 			if(carattere == '0'){
-				risultato += "0";
+				risultato += 0;
 			} else if(carattere == '1'){
-				risultato += "1";
+				risultato += 1;
 			} else if(carattere == '2'){
-				risultato += "2";
+				risultato += 2;
 			} else if(carattere == '3'){
-				risultato += "3";
+				risultato += 3;
 			} else if(carattere == '4'){
-				risultato += "4";
+				risultato += 4;
 			} else if(carattere == '5'){
-				risultato += "5";
+				risultato += 5;
 			} else if(carattere == '6'){
-				risultato += "6";
+				risultato += 6;
 			} else if(carattere == '7'){
-				risultato += "7";
+				risultato += 7;
 			} else if(carattere == '8'){
-				risultato += "8";
+				risultato += 8;
 			} else if(carattere == '9'){
-				risultato += "9";
+				risultato += 9;
 			} else if(carattere == 'A'){
-				risultato += "0";
+				risultato += 0;
 			} else if(carattere == 'B'){
-				risultato += "1";
+				risultato += 1;
 			} else if(carattere == 'C'){
-				risultato += "2";
+				risultato += 2;
 			} else if(carattere == 'D'){
-				risultato += "3";
+				risultato += 3;
 			} else if(carattere == 'E'){
-				risultato += "4";
+				risultato += 4;
 			} else if(carattere == 'F'){
-				risultato += "5";
+				risultato += 5;
 			} else if(carattere == 'G'){
-				risultato += "6";
+				risultato += 6;
 			} else if(carattere == 'H'){
-				risultato += "7";
+				risultato += 7;
 			} else if(carattere == 'I'){
-				risultato += "8";
+				risultato += 8;
 			} else if(carattere == 'J'){
-				risultato += "9";
+				risultato += 9;
 			} else if(carattere == 'K'){
-				risultato += "10";
+				risultato += 10;
 			} else if(carattere == 'L'){
-				risultato += "11";
+				risultato += 11;
 			} else if(carattere == 'M'){
-				risultato += "12";
+				risultato += 12;
 			} else if(carattere == 'N'){
-				risultato += "13";
+				risultato += 13;
 			} else if(carattere == 'O'){
-				risultato += "14";
+				risultato += 14;
 			} else if(carattere == 'P'){
-				risultato += "15";
+				risultato += 15;
 			} else if(carattere == 'Q'){
-				risultato += "16";
+				risultato += 16;
 			} else if(carattere == 'R'){
-				risultato += "17";
+				risultato += 17;
 			} else if(carattere == 'S'){
-				risultato += "18";
+				risultato += 18;
 			} else if(carattere == 'T'){
-				risultato += "19";
+				risultato += 19;
 			} else if(carattere == 'U'){
-				risultato += "20";
+				risultato += 20;
 			} else if(carattere == 'V'){
-				risultato += "21";
+				risultato += 21;
 			} else if(carattere == 'W'){
-				risultato += "22";
+				risultato += 22;
 			} else if(carattere == 'X'){
-				risultato += "23";
+				risultato += 23;
 			} else if(carattere == 'Y'){
-				risultato += "24";
+				risultato += 24;
 			} else if(carattere == 'Z'){
-				risultato += "25";
+				risultato += 25;
 			}
 		}
 		return risultato;
