@@ -15,5 +15,10 @@
     <string name="comune">Comune</string>
     <string name="data">Data</string>
     <string name="empty"></string>
-
+    <string name="ok">OK</string>
+    <string name="codice_fiscale">Codice fiscale</string>
+    <string name="sesso_non_selezionato">Sesso non selezionato.</string>
+    <string name="comune_non_inserito">Comune non inserito.</string>
+    <string name="comune_non_trovato">Comune non trovato.</string>
+    <string name="errore_generico">Errore generico.</string>
 </resources>

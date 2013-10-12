@@ -8,7 +8,10 @@ import it.androidcf.exceptions.ComuneNonInseritoException;
 import it.androidcf.exceptions.ComuneNonTrovatoException;
 import it.androidcf.exceptions.SessoNonInseritoException;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -98,26 +101,85 @@ public class AndroidCF extends Activity {
 			
 			
 			CodiceFiscale codiceFiscale = new CodiceFiscale(nome, cognome, giorno, mese, anno, sesso, comuneDiNascita, database);
+			String codiceFiscaleGenerato = codiceFiscale.calcola();
+			
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(getString(R.string.codice_fiscale) + ":\n" + Html.fromHtml("<center>" + codiceFiscaleGenerato + "</center>"))
+			       .setCancelable(false)
+			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                //do things
+			           }
+			       });
+			AlertDialog alert = builder.create();
+			alert.show();
+			
+			
 			if(BuildConfig.DEBUG){
-				Log.d(Constants.LOG, "Codice fiscale generato: " + codiceFiscale.calcola());
+				Log.d(Constants.LOG, "Codice fiscale generato: " + codiceFiscaleGenerato);
 			}
 			
 		} catch (SessoNonInseritoException e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Sesso non selezionato.");
 			}
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(R.string.sesso_non_selezionato)
+			       .setCancelable(false)
+			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                //do things
+			           }
+			       });
+			AlertDialog alert = builder.create();
+			alert.show();
 		} catch (ComuneNonInseritoException e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Comune non inserito.");
 			}
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(R.string.comune_non_inserito)
+			       .setCancelable(false)
+			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                //do things
+			           }
+			       });
+			AlertDialog alert = builder.create();
+			alert.show();
 		} catch (ComuneNonTrovatoException e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Comune non trovato.");
 			}
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(R.string.comune_non_trovato)
+			       .setCancelable(false)
+			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                //do things
+			           }
+			       });
+			AlertDialog alert = builder.create();
+			alert.show();
 		} catch (Exception e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Errore: " + e);
 			}
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(R.string.errore_generico)
+			       .setCancelable(false)
+			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                //do things
+			           }
+			       });
+			AlertDialog alert = builder.create();
+			alert.show();
 		}
 	}
 
