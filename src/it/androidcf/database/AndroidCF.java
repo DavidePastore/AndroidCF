@@ -1,5 +1,6 @@
 package it.androidcf.database;
 
+import it.androidcf.exceptions.ComuneNonTrovatoException;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -72,7 +73,7 @@ public class AndroidCF extends SQLiteAssetHelper{
     	c.moveToFirst();
     	
     	if(c.getCount() == 0){
-    		throw new Exception("Nessun codice catastale trovato");
+    		throw new ComuneNonTrovatoException("Nessun codice catastale trovato");
     	}
     	
     	return c.getString(0);

@@ -3,7 +3,6 @@ package it.androidcf.codicefiscale;
 import android.util.Log;
 import it.androidcf.BuildConfig;
 import it.androidcf.Constants;
-import it.androidcf.ui.AndroidCF;
 import it.androidcf.util.UtilsParole;
 
 /**
@@ -392,8 +391,8 @@ public class CodiceFiscale {
 		char restoConvertito = conversioneResto(resto);
 		
 		if(BuildConfig.DEBUG){
-			Log.d(Constants.LOG, "dispari: " + dispari);
-			Log.d(Constants.LOG, "pari: " + pari);
+			Log.d(Constants.LOG, "dispari: " + sommaDispari);
+			Log.d(Constants.LOG, "pari: " + sommaPari);
 			Log.d(Constants.LOG, "somma: " + somma);
 			Log.d(Constants.LOG, "resto: " + resto);
 			Log.d(Constants.LOG, "restoConvertito: " + restoConvertito);

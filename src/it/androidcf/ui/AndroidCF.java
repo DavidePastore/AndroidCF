@@ -1,8 +1,14 @@
 package it.androidcf.ui;
 
-import android.os.Bundle;
+import it.androidcf.BuildConfig;
+import it.androidcf.Constants;
+import it.androidcf.R;
+import it.androidcf.codicefiscale.CodiceFiscale;
+import it.androidcf.exceptions.ComuneNonInseritoException;
+import it.androidcf.exceptions.ComuneNonTrovatoException;
+import it.androidcf.exceptions.SessoNonInseritoException;
 import android.app.Activity;
-import android.database.Cursor;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -10,10 +16,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import it.androidcf.BuildConfig;
-import it.androidcf.Constants;
-import it.androidcf.R;
-import it.androidcf.codicefiscale.CodiceFiscale;
 
 public class AndroidCF extends Activity {
 	
@@ -64,43 +66,54 @@ public class AndroidCF extends Activity {
 		int giorno;
 		int mese;
 		int anno;
-		String dataDiNascita;
 		String sesso;
 		String comuneDiNascita;
-		
-		EditText editTextName = (EditText) findViewById(R.id.editTextNome);
-		EditText editTextCognome = (EditText) findViewById(R.id.editTextCognome);
-		DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
-		RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-		RadioButton radioButton;
-		EditText editTextComune = (EditText) findViewById(R.id.editTextComune);
-		
-		if(radioGroup.getCheckedRadioButtonId() == -1){
-			//Mostra un alert (data non selezionata)
-			if(BuildConfig.DEBUG){
-				Log.d(Constants.LOG, "Data non selezionata -> default: M");
-			}
-			
-			radioButton = (RadioButton) findViewById(R.id.radioM);
-		}
-		else{
-			radioButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-		}
-		
-		nome = editTextName.getText().toString();
-		cognome = editTextCognome.getText().toString();
-		sesso = (String) radioButton.getText();
-		giorno = datePicker.getDayOfMonth();
-		mese = datePicker.getMonth();
-		anno = datePicker.getYear();
-		comuneDiNascita = editTextComune.getText().toString();
 
 		try {
+			EditText editTextName = (EditText) findViewById(R.id.editTextNome);
+			EditText editTextCognome = (EditText) findViewById(R.id.editTextCognome);
+			DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+			RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+			RadioButton radioButton;
+			EditText editTextComune = (EditText) findViewById(R.id.editTextComune);
+			
+			if(radioGroup.getCheckedRadioButtonId() == -1){
+				throw new SessoNonInseritoException("Sesso non selezionato");
+			}
+			else{
+				radioButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+			}
+			
+			nome = editTextName.getText().toString();
+			cognome = editTextCognome.getText().toString();
+			sesso = (String) radioButton.getText();
+			giorno = datePicker.getDayOfMonth();
+			mese = datePicker.getMonth();
+			anno = datePicker.getYear();
+			comuneDiNascita = editTextComune.getText().toString();
+			
+			if(comuneDiNascita.isEmpty()){
+				throw new ComuneNonInseritoException("Comune non inserito");
+			}
+			
+			
 			CodiceFiscale codiceFiscale = new CodiceFiscale(nome, cognome, giorno, mese, anno, sesso, comuneDiNascita, database);
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Codice fiscale generato: " + codiceFiscale.calcola());
 			}
 			
+		} catch (SessoNonInseritoException e) {
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Sesso non selezionato.");
+			}
+		} catch (ComuneNonInseritoException e) {
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Comune non inserito.");
+			}
+		} catch (ComuneNonTrovatoException e) {
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, "Comune non trovato.");
+			}
 		} catch (Exception e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Errore: " + e);
