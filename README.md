@@ -1,4 +1,4 @@
 AndroidCF
 =========
 
-Applicazione Android che crea il codice fiscale
+Applicazione Android che calcola il codice fiscale.
