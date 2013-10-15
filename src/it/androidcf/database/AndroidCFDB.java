@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteQueryBuilder;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
-public class AndroidCF extends SQLiteAssetHelper{
+public class AndroidCFDB extends SQLiteAssetHelper{
 
-	private static final String DATABASE_NAME = "AndroidCF";
+	private static final String DATABASE_NAME = "AndroidCFDB";
     private static final int DATABASE_VERSION = 1;
     
     //Colonne
@@ -19,7 +19,7 @@ public class AndroidCF extends SQLiteAssetHelper{
     public static final int COLONNA_CODICE_CATASTALE = 2;
     public static final int COLONNA_PROVINCIA = 3;
 
-    public AndroidCF(Context context) {
+    public AndroidCFDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);  
     }
     

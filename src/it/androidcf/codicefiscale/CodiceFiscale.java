@@ -19,7 +19,7 @@ public class CodiceFiscale {
 	private int anno;
 	private String sesso;
 	private String comuneDiNascita;
-	private it.androidcf.database.AndroidCF database;
+	private it.androidcf.database.AndroidCFDB database;
 	
 	/**
 	 * Costruttore della classe
@@ -30,7 +30,7 @@ public class CodiceFiscale {
 	 * @param comuneDiNascita
 	 * @param database 
 	 */
-	public CodiceFiscale(String nome, String cognome, int giorno, int mese, int anno, String sesso, String comuneDiNascita, it.androidcf.database.AndroidCF androidCF){
+	public CodiceFiscale(String nome, String cognome, int giorno, int mese, int anno, String sesso, String comuneDiNascita, it.androidcf.database.AndroidCFDB androidCF){
 		this.nome = nome;
 		this.cognome = cognome;
 		this.giorno = giorno;

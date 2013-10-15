@@ -22,7 +22,7 @@ import android.widget.RadioGroup;
 
 public class AndroidCF extends Activity {
 	
-	private it.androidcf.database.AndroidCF database;
+	private it.androidcf.database.AndroidCFDB database;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,8 @@ public class AndroidCF extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		menu.add("Item 1");
+		menu.add("Item 2");
 		return true;
 	}
 	
@@ -62,7 +62,7 @@ public class AndroidCF extends Activity {
 	 * @param v the View.
 	 */
 	public void onCalcolaClicked(View v){
-		database = new it.androidcf.database.AndroidCF(this);
+		database = new it.androidcf.database.AndroidCFDB(this);
 		
 		String nome;
 		String cognome;
@@ -95,7 +95,7 @@ public class AndroidCF extends Activity {
 			anno = datePicker.getYear();
 			comuneDiNascita = editTextComune.getText().toString();
 			
-			if(comuneDiNascita.isEmpty()){
+			if(comuneDiNascita.equals("")){
 				throw new ComuneNonInseritoException("Comune non inserito");
 			}
 			
