@@ -12,6 +12,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -49,7 +50,12 @@ public class AndroidCF extends Activity {
 		RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 		EditText editTextComune = (EditText) findViewById(R.id.editTextComune);
 		
-		
+		Time now = new Time();
+		now.setToNow();
+		int anno = now.year;
+		int mese = now.month;
+		int giorno = now.monthDay;
+		datePicker.updateDate(anno, mese, giorno);
 		editTextName.setText("");
 		editTextCognome.setText("");
 		editTextComune.setText("");
