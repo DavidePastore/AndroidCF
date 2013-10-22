@@ -410,78 +410,115 @@ public class CodiceFiscale {
 		int risultato = 0;
 		for(int i = 0; i < string.length(); i++){
 			char carattere = string.charAt(i);
-			if(carattere == '0'){
+			switch(carattere){
+			case '0':
 				risultato += 1;
-			} else if(carattere == '1'){
-				risultato += 0;
-			} else if(carattere == '2'){
+				break;
+			case '1':
+				risultato +=0;
+				break;
+			case '2':
 				risultato += 5;
-			} else if(carattere == '3'){
+				break;
+			case '3':
 				risultato += 7;
-			} else if(carattere == '4'){
+				break;
+			case '4':
 				risultato += 9;
-			} else if(carattere == '5'){
+				break;
+			case '5':
 				risultato += 13;
-			} else if(carattere == '6'){
+				break;
+			case '6':
 				risultato += 15;
-			} else if(carattere == '7'){
+				break;
+			case '7':
 				risultato += 17;
-			} else if(carattere == '8'){
+				break;
+			case '8':
 				risultato += 19;
-			} else if(carattere == '9'){
+				break;
+			case '9':
 				risultato += 21;
-			} else if(carattere == 'A'){
+				break;
+			case 'A':
 				risultato += 1;
-			} else if(carattere == 'B'){
+				break;
+			case 'B':
 				risultato += 0;
-			} else if(carattere == 'C'){
+				break;
+			case 'C':
 				risultato += 5;
-			} else if(carattere == 'D'){
+				break;
+			case 'D':
 				risultato += 7;
-			} else if(carattere == 'E'){
+				break;
+			case 'E':
 				risultato += 9;
-			} else if(carattere == 'F'){
+				break;
+			case 'F':
 				risultato += 13;
-			} else if(carattere == 'G'){
+				break;
+			case 'G':
 				risultato += 15;
-			} else if(carattere == 'H'){
+				break;
+			case 'H':
 				risultato += 17;
-			} else if(carattere == 'I'){
+				break;
+			case 'I':
 				risultato += 19;
-			} else if(carattere == 'J'){
+				break;
+			case 'J':
 				risultato += 21;
-			} else if(carattere == 'K'){
+				break;
+			case 'K':
 				risultato += 2;
-			} else if(carattere == 'L'){
+				break;
+			case 'L':
 				risultato += 4;
-			} else if(carattere == 'M'){
+				break;
+			case 'M':
 				risultato += 18;
-			} else if(carattere == 'N'){
+				break;
+			case 'N':
 				risultato += 20;
-			} else if(carattere == 'O'){
+				break;
+			case 'O':
 				risultato += 11;
-			} else if(carattere == 'P'){
+				break;
+			case 'P':
 				risultato += 3;
-			} else if(carattere == 'Q'){
+				break;
+			case 'Q':
 				risultato += 6;
-			} else if(carattere == 'R'){
+				break;
+			case 'R':
 				risultato += 8;
-			} else if(carattere == 'S'){
+				break;
+			case 'S':
 				risultato += 12;
-			} else if(carattere == 'T'){
+				break;
+			case 'T':
 				risultato += 14;
-			} else if(carattere == 'U'){
+				break;
+			case 'U':
 				risultato += 16;
-			} else if(carattere == 'V'){
+				break;
+			case 'V':
 				risultato += 10;
-			} else if(carattere == 'W'){
+				break;
+			case 'W':
 				risultato += 22;
-			} else if(carattere == 'X'){
+				break;
+			case 'X':
 				risultato += 25;
-			} else if(carattere == 'Y'){
+				break;
+			case 'Y':
 				risultato += 24;
-			} else if(carattere == 'Z'){
+				break;
+			case 'Z':
 				risultato += 23;
+				break;
 			}
 		}
 		return risultato;
@@ -497,78 +534,20 @@ public class CodiceFiscale {
 		int risultato = 0;
 		for(int i = 0; i < string.length(); i++){
 			char carattere = string.charAt(i);
-			if(carattere == '0'){
-				risultato += 0;
-			} else if(carattere == '1'){
-				risultato += 1;
-			} else if(carattere == '2'){
-				risultato += 2;
-			} else if(carattere == '3'){
-				risultato += 3;
-			} else if(carattere == '4'){
-				risultato += 4;
-			} else if(carattere == '5'){
-				risultato += 5;
-			} else if(carattere == '6'){
-				risultato += 6;
-			} else if(carattere == '7'){
-				risultato += 7;
-			} else if(carattere == '8'){
-				risultato += 8;
-			} else if(carattere == '9'){
-				risultato += 9;
-			} else if(carattere == 'A'){
-				risultato += 0;
-			} else if(carattere == 'B'){
-				risultato += 1;
-			} else if(carattere == 'C'){
-				risultato += 2;
-			} else if(carattere == 'D'){
-				risultato += 3;
-			} else if(carattere == 'E'){
-				risultato += 4;
-			} else if(carattere == 'F'){
-				risultato += 5;
-			} else if(carattere == 'G'){
-				risultato += 6;
-			} else if(carattere == 'H'){
-				risultato += 7;
-			} else if(carattere == 'I'){
-				risultato += 8;
-			} else if(carattere == 'J'){
-				risultato += 9;
-			} else if(carattere == 'K'){
-				risultato += 10;
-			} else if(carattere == 'L'){
-				risultato += 11;
-			} else if(carattere == 'M'){
-				risultato += 12;
-			} else if(carattere == 'N'){
-				risultato += 13;
-			} else if(carattere == 'O'){
-				risultato += 14;
-			} else if(carattere == 'P'){
-				risultato += 15;
-			} else if(carattere == 'Q'){
-				risultato += 16;
-			} else if(carattere == 'R'){
-				risultato += 17;
-			} else if(carattere == 'S'){
-				risultato += 18;
-			} else if(carattere == 'T'){
-				risultato += 19;
-			} else if(carattere == 'U'){
-				risultato += 20;
-			} else if(carattere == 'V'){
-				risultato += 21;
-			} else if(carattere == 'W'){
-				risultato += 22;
-			} else if(carattere == 'X'){
-				risultato += 23;
-			} else if(carattere == 'Y'){
-				risultato += 24;
-			} else if(carattere == 'Z'){
-				risultato += 25;
+			int numero = Character.getNumericValue(carattere);
+
+			if(Character.isLetter(carattere)){
+				//Se è una lettera
+				numero = carattere - 65;
+				risultato += numero;
+			}
+			else{
+				//Se è un numero
+				risultato += numero;
+			}
+			
+			if(BuildConfig.DEBUG){
+				Log.d(Constants.LOG, carattere + " -> " + (numero));
 			}
 		}
 		return risultato;
