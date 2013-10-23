@@ -24,12 +24,12 @@ public class CodiceFiscale {
 	
 	/**
 	 * Costruttore della classe
-	 * @param nome
-	 * @param cognome
-	 * @param dataDiNascita
-	 * @param sesso
-	 * @param comuneDiNascita
-	 * @param database 
+	 * @param nome Il nome.
+	 * @param cognome Il cognome.
+	 * @param dataDiNascita La data di nascita.
+	 * @param sesso Il sesso.
+	 * @param comuneDiNascita Il comune di nascita.
+	 * @param database Il database.
 	 */
 	public CodiceFiscale(String nome, String cognome, int giorno, int mese, int anno, String sesso, String comuneDiNascita, AndroidCFDB androidCF){
 		this.nome = nome;
