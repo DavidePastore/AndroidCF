@@ -7,7 +7,9 @@
     <application
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
-        <!-- <activity
+
+        <!--
+        <activity
             android:name="it.ioprogrammo.uidemo1.AndroidCF"
             android:label="@string/app_name" >
             <intent-filter>
@@ -15,16 +17,22 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> -->
+        </activity>
+        -->
         <activity
-            android:name="it.androidcf.ui.AndroidCF"
-            android:label="@string/title_activity_main" >
+            android:name="it.androidcf.activity.ActivityScegliOperazione"
+            android:label="@string/title_activity_activity_scegli_operazione" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="it.androidcf.activity.AndroidCF"
+            android:label="@string/title_activity_main" >
+        </activity>
+        
     </application>
 
     <uses-sdk android:minSdkVersion="5" />

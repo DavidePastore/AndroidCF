@@ -1,4 +1,4 @@
-package it.androidcf.ui;
+package it.androidcf.activity;
 
 import it.androidcf.BuildConfig;
 import it.androidcf.Constants;
@@ -68,11 +68,11 @@ public class AndroidCF extends Activity {
 	
 	
 	/**
-	 * Calcola il valore del comune.
+	 * Calcola il valore del codice fiscale.
 	 * @param v the View.
 	 */
 	public void onCalcolaClicked(View v){
-		database = new it.androidcf.database.AndroidCFDB(this);
+		database = new AndroidCFDB(this);
 		
 		String nome;
 		String cognome;

@@ -21,4 +21,8 @@
     <string name="comune_non_inserito">Comune non inserito.</string>
     <string name="comune_non_trovato">Comune non trovato.</string>
     <string name="errore_generico">Errore generico.</string>
+    <string name="title_activity_activity_scegli_operazione">Scegli operazione</string>
+    <string name="scegli_operazione">Scegli Operazione</string>
+    <string name="estrai">Estrai</string>
+
 </resources>
