@@ -10,6 +10,7 @@
     tools:context=".AndroidCFDB" >
 
     <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -31,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
-
         </TableRow>
 
         <TableRow
@@ -73,7 +73,6 @@
                 android:id="@+id/datePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
         </TableRow>
 
         <TableRow
@@ -106,7 +105,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/maschio" />
             </RadioGroup>
-
         </TableRow>
 
         <TableRow
@@ -127,30 +125,26 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text" />
-
         </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/buttonCalcola1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onCalcolaClicked"
-                android:text="@string/calcola" />
-
-            <Button
-                android:id="@+id/buttonCancella"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onBtnClicked"
-                android:text="@string/cancella" />
-
-        </TableRow>
-
     </TableLayout>
+
+    <Button
+        android:id="@+id/buttonCancella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonCalcola1"
+        android:layout_alignBottom="@+id/buttonCalcola1"
+        android:layout_alignRight="@+id/tableLayout1"
+        android:onClick="onBtnClicked"
+        android:text="@string/cancella" />
+
+    <Button
+        android:id="@+id/buttonCalcola1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tableLayout1"
+        android:layout_toLeftOf="@+id/buttonCancella"
+        android:onClick="onCalcolaClicked"
+        android:text="@string/calcola" />
 
 </RelativeLayout>
