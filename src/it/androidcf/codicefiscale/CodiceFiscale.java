@@ -413,62 +413,42 @@ public class CodiceFiscale {
 			char carattere = string.charAt(i);
 			switch(carattere){
 			case '0':
-				risultato += 1;
-				break;
-			case '1':
-				risultato +=0;
-				break;
-			case '2':
-				risultato += 5;
-				break;
-			case '3':
-				risultato += 7;
-				break;
-			case '4':
-				risultato += 9;
-				break;
-			case '5':
-				risultato += 13;
-				break;
-			case '6':
-				risultato += 15;
-				break;
-			case '7':
-				risultato += 17;
-				break;
-			case '8':
-				risultato += 19;
-				break;
-			case '9':
-				risultato += 21;
-				break;
 			case 'A':
 				risultato += 1;
 				break;
+			case '1':
 			case 'B':
 				risultato += 0;
 				break;
+			case '2':
 			case 'C':
 				risultato += 5;
 				break;
+			case '3':
 			case 'D':
 				risultato += 7;
 				break;
+			case '4':
 			case 'E':
 				risultato += 9;
 				break;
+			case '5':
 			case 'F':
 				risultato += 13;
 				break;
+			case '6':
 			case 'G':
 				risultato += 15;
 				break;
+			case '7':
 			case 'H':
 				risultato += 17;
 				break;
+			case '8':
 			case 'I':
 				risultato += 19;
 				break;
+			case '9':
 			case 'J':
 				risultato += 21;
 				break;
