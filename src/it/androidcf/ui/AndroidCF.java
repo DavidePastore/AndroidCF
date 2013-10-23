@@ -4,6 +4,7 @@ import it.androidcf.BuildConfig;
 import it.androidcf.Constants;
 import it.androidcf.R;
 import it.androidcf.codicefiscale.CodiceFiscale;
+import it.androidcf.database.AndroidCFDB;
 import it.androidcf.exceptions.ComuneNonInseritoException;
 import it.androidcf.exceptions.ComuneNonTrovatoException;
 import it.androidcf.exceptions.SessoNonInseritoException;
@@ -20,10 +21,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class AndroidCF extends Activity {
 	
-	private it.androidcf.database.AndroidCFDB database;
+	private AndroidCFDB database;
+	
+	private int durataToast = Toast.LENGTH_SHORT;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -131,61 +135,29 @@ public class AndroidCF extends Activity {
 				Log.d(Constants.LOG, "Sesso non selezionato.");
 			}
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.sesso_non_selezionato)
-			       .setCancelable(false)
-			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			                //do things
-			           }
-			       });
-			AlertDialog alert = builder.create();
-			alert.show();
+			Toast toast = Toast.makeText(getApplicationContext(), R.string.sesso_non_selezionato, durataToast);
+			toast.show();
 		} catch (ComuneNonInseritoException e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Comune non inserito.");
 			}
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.comune_non_inserito)
-			       .setCancelable(false)
-			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			                //do things
-			           }
-			       });
-			AlertDialog alert = builder.create();
-			alert.show();
+			Toast toast = Toast.makeText(getApplicationContext(), R.string.comune_non_inserito, durataToast);
+			toast.show();
 		} catch (ComuneNonTrovatoException e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Comune non trovato.");
 			}
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.comune_non_trovato)
-			       .setCancelable(false)
-			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			                //do things
-			           }
-			       });
-			AlertDialog alert = builder.create();
-			alert.show();
+			Toast toast = Toast.makeText(getApplicationContext(), R.string.comune_non_trovato, durataToast);
+			toast.show();
 		} catch (Exception e) {
 			if(BuildConfig.DEBUG){
 				Log.d(Constants.LOG, "Errore: " + e);
 			}
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.errore_generico)
-			       .setCancelable(false)
-			       .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			                //do things
-			           }
-			       });
-			AlertDialog alert = builder.create();
-			alert.show();
+			Toast toast = Toast.makeText(getApplicationContext(), R.string.errore_generico, durataToast);
+			toast.show();
 		}
 	}
 
