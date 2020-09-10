@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidCF</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="sesso">Sesso</string>
+    <string name="maschio">M</string>
+    <string name="femmina">F</string>
+    <string name="calcola">Calcola</string>
+    <string name="cancella">Cancella</string>
+    <string name="title_activity_main">Calcola Codice Fiscale</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="comune">Comune</string>
+    <string name="data">Data</string>
+    <string name="empty"></string>
+    <string name="ok">OK</string>
+    <string name="codice_fiscale">Codice fiscale</string>
+    <string name="sesso_non_selezionato">Sesso non selezionato.</string>
+    <string name="comune_non_inserito">Comune non inserito.</string>
+    <string name="comune_non_trovato">Comune non trovato.</string>
+    <string name="errore_generico">Errore generico.</string>
+    <string name="title_activity_activity_scegli_operazione">Scegli operazione</string>
+    <string name="scegli_operazione">Scegli Operazione</string>
+    <string name="estrai">Estrai</string>
+
+</resources>
