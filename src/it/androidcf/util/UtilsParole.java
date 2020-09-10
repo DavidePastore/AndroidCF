@@ -1,7 +1,7 @@
 package it.androidcf.util;
 
 /**
- * Utilità per le parole.
+ * UtilitÃ  per le parole.
  * @author <a href="https://github.com/DavidePastore">Davide Pastore</a>
  *
  */
@@ -111,9 +111,9 @@ public class UtilsParole {
 	
 	
 	/**
-	 * Controlla se un carattere è una vocale.
+	 * Controlla se un carattere ï¿½ una vocale.
 	 * @param character il carattere.
-	 * @return Restituisce true se il carattere è una vocale e false in caso contrario.
+	 * @return Restituisce true se il carattere ï¿½ una vocale e false in caso contrario.
 	 */
 	public static boolean isVocale(char character){
 		return VOCALI.contains(Character.toString(character));

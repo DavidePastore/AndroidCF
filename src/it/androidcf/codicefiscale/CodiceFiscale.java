@@ -518,12 +518,12 @@ public class CodiceFiscale {
 			int numero = Character.getNumericValue(carattere);
 
 			if(Character.isLetter(carattere)){
-				//Se è una lettera
+				//Se Ã¨ una lettera
 				numero = carattere - 65;
 				risultato += numero;
 			}
 			else{
-				//Se è un numero
+				//Se Ã¨ un numero
 				risultato += numero;
 			}
 			
