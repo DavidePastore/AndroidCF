@@ -4,7 +4,7 @@
 package it.androidcf.exceptions;
 
 /**
- * Eccezione: il sesso non è stato inserito.
+ * Eccezione: il sesso non Ã¨ stato inserito.
  * @author <a href="https://github.com/DavidePastore">DavidePastore</a>
  *
  */

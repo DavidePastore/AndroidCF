@@ -4,7 +4,7 @@
 package it.androidcf.exceptions;
 
 /**
- * Eccezione: il comune non è stato trovato.
+ * Eccezione: il comune non Ã¨ stato trovato.
  * @author <a href="https://github.com/DavidePastore">DavidePastore</a>
  *
  */
