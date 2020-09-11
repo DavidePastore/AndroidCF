@@ -108,12 +108,13 @@ public class AndroidCF extends Activity {
 			if(comuneDiNascita.equals("")){
 				throw new ComuneNonInseritoException("Comune non inserito");
 			}
-			
-			
+
+
+			mese += 1;
 			CodiceFiscale codiceFiscale = new CodiceFiscale(nome, cognome, giorno, mese, anno, sesso, comuneDiNascita, database);
 			String codiceFiscaleGenerato = codiceFiscale.calcola();
-			
-			
+
+
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage(getString(R.string.codice_fiscale) + ":\n" + Html.fromHtml("<center>" + codiceFiscaleGenerato + "</center>"))
 			       .setCancelable(false)
