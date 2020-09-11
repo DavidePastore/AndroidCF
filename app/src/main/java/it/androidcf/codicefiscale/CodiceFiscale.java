@@ -293,7 +293,6 @@ public class CodiceFiscale {
 	 */
 	private String calcolaCodiceMese(int mese){
 		String risultato;
-		mese++; //I mesi iniziano da 1
 		switch(mese){
 			case 1:
 				risultato = "A";
@@ -332,6 +331,7 @@ public class CodiceFiscale {
 				risultato = "T";
 				break;
 			default:
+				// TODO throw an exception here
 				risultato = "";
 				break;
 		}
