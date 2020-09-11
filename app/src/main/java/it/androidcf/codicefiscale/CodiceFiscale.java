@@ -172,7 +172,7 @@ public class CodiceFiscale {
 	private String calcolaCodiceCognome(String cognome){
 		String codiceCognome;
 		int numeroConsonanti;
-		cognome = UtilsParole.eliminaSpaziBianchi(cognome).toUpperCase();
+		cognome = UtilsParole.pulisciStringa(cognome).toUpperCase();
 		
 		if(cognome.length() >= 3){
 			if(BuildConfig.DEBUG){
@@ -215,7 +215,7 @@ public class CodiceFiscale {
 	private String calcolaCodiceNome(String nome){
 		String codiceNome;
 		int numeroConsonanti;
-		nome = UtilsParole.eliminaSpaziBianchi(nome).toUpperCase();
+		nome = UtilsParole.pulisciStringa(nome).toUpperCase();
 		
 		if(nome.length() >= 3){
 			if(BuildConfig.DEBUG){
