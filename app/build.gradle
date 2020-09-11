@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "it.androidcf"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 29
     }
 
     buildTypes {
@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:26.0.0'
+    implementation 'com.android.support:support-v4:29.0.2'
     compile files('libs/android-sqlite-asset-helper.jar')
 }
