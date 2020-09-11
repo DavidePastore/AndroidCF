@@ -38,3 +38,9 @@ jdk:
   - openjdk13
   - openjdk14
   - openjdk15
+
+
+matrix:
+  allow_failures:
+    - jdk: oraclejdk15
+    - jdk: openjdk15
