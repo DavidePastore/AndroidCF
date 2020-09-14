@@ -108,6 +108,24 @@ public class UtilsParole {
 	public static String eliminaSpaziBianchi(String string){
 		return string.replaceAll("\\s+","");
 	}
+
+	/**
+	 * Elimina tutti i caratteri speciali presenti nella stringa.
+	 * @param string la stringa sulla quale eliminare i caratteri speciali.
+	 * @return Restituisce la stringa senza i caratteri speciali.
+	 */
+	public static String eliminaCaratteriSpeciali(String string){
+		return string.replaceAll("'","");
+	}
+
+	/**
+	 * Ripulisce la stringa da eventuali caratteri speciali o spazi bianchi.
+	 * @param string la stringa da ripulire.
+	 * @return Restituisce la stringa ripulita da eventuali caratteri speciali o spazi bianchi.
+	 */
+	public static String pulisciStringa(String string) {
+		return eliminaCaratteriSpeciali(eliminaSpaziBianchi(string));
+	}
 	
 	
 	/**

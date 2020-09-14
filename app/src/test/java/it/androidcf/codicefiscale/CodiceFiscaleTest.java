@@ -39,4 +39,32 @@ public class CodiceFiscaleTest {
         String calculated = codiceFiscale.calcola();
         Assert.assertEquals("RSSMRA85T10A562S", calculated);
     }
+
+    @Test
+    public void testCalcolaCodiceFiscaleWithApostropheInTheName() throws Exception {
+        String nome = "M'ario";
+        String cognome = "Rossi";
+        int giorno = 10;
+        int mese = 12;
+        int anno = 1985;
+        String sesso = "M";
+        String comuneDiNascita = "San Giuliano Terme";
+        CodiceFiscale codiceFiscale = new CodiceFiscale(nome, cognome, giorno, mese, anno, sesso, comuneDiNascita, getAndroidCFDB());
+        String calculated = codiceFiscale.calcola();
+        Assert.assertEquals("RSSMRA85T10A562S", calculated);
+    }
+
+    @Test
+    public void testCalcolaCodiceFiscaleWithApostropheInTheSurname() throws Exception {
+        String nome = "Mario";
+        String cognome = "R'ossi";
+        int giorno = 10;
+        int mese = 12;
+        int anno = 1985;
+        String sesso = "M";
+        String comuneDiNascita = "San Giuliano Terme";
+        CodiceFiscale codiceFiscale = new CodiceFiscale(nome, cognome, giorno, mese, anno, sesso, comuneDiNascita, getAndroidCFDB());
+        String calculated = codiceFiscale.calcola();
+        Assert.assertEquals("RSSMRA85T10A562S", calculated);
+    }
 }
